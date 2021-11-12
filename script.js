@@ -42,7 +42,7 @@ function adiciona(objeto) {
         var riscado = 'style="text-decoration: none"'
         var checked = ""
     }
-    var post = document.createElement("div")
+    var post = document.createElement("li")
     post.setAttribute("style", `background-color: ${objeto.cor}`)
     post.className = "post"
     post.innerHTML = `<input type="color" class="color" style="display: none">
