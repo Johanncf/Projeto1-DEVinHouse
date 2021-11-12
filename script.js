@@ -65,15 +65,10 @@ function adiciona(objeto) {
 
 
     risca()
-
     edita()
-
     desabilitaEdicao()
-
     mostraPaleta()
-
     mudaCor()
-
     apaga()
 }
 
@@ -93,21 +88,6 @@ function risca() {
             listaPosts[index].pronto = "false"
         }
         atualizaStorage(listaPosts)
-        // posts.forEach((e, index) => {
-        //     var btnRisca = e.querySelector("#box")
-        //     var texto = e.querySelector("p")
-
-        //     btnRisca.addEventListener("click", () => {
-        //         if (btnRisca.checked) {
-        //             texto.style.textDecoration = "line-through"
-        //             listaPosts[index].pronto = "true"
-        //         } else {
-        //             texto.style.textDecoration = "none"
-        //             listaPosts[index].pronto = "false"
-        //         }
-        //         atualizaStorage(listaPosts)
-        //     })
-        // })
     })
 }
 
@@ -116,19 +96,13 @@ function edita() {
             var ultimoPost = posts[0]
             var btnEdita = ultimoPost.querySelector("#edita")
             var texto = ultimoPost.querySelector("p")
+            var btnRisca = ultimoPost.querySelector("#box")
             btnEdita.addEventListener("click", () => {
-                texto.setAttribute("contenteditable", "true")
-                texto.style.backgroundColor = "black"
-                texto.style.color = "white"
+                if(!btnRisca.checked){
+                    texto.setAttribute("contenteditable", "true")
+                    texto.focus()
+                }
             })
-            // posts.forEach(e => {
-            //     var btnEdita = e.querySelector("#edita")
-            //     var texto = e.querySelector("p")
-            //     btnEdita.addEventListener("click", () => {
-            //         texto.setAttribute("contenteditable", "true")
-            //         document.addEventListener("click")
-            //     })
-            // })
         }
 
 function desabilitaEdicao() {
@@ -138,8 +112,7 @@ function desabilitaEdicao() {
             var texto = ultimoPost.querySelector("p")
             texto.addEventListener("focusout", () => {
                 texto.contentEditable = "false"
-                texto.style.backgroundColor = ultimoPost.style.backgroundColor
-                texto.style.color = "black"
+                texto.blur()
                 listaPosts[index].tarefa = texto.innerText
                 atualizaStorage(listaPosts)
             })
@@ -183,10 +156,4 @@ function mudaCor() {
                 atualizaStorage(listaPosts)
             })
         }
-
-
-
-// document.addEventListener("click", desabilita)
-
-
 
