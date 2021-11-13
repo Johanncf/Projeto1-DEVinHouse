@@ -28,8 +28,12 @@ main{
 
 }
 
-footer {
-    background-color: black;
+footer p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: large;
+    padding: 15px;
+    text-align: center;
+    color: white;
 }
 
 .campo div{
