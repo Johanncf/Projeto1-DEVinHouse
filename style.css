@@ -28,6 +28,10 @@ main{
 
 }
 
+footer {
+    background-color: black;
+}
+
 .campo div{
     display: flex;
     justify-content: center;
