@@ -5,21 +5,24 @@ var listaPosts = []
 
 var listaStorage = JSON.parse(localStorage.getItem("posts"))
 
+// Verifica se existe informação no LocalStorage e caso exista passa as infos para a variável listaPosts
 if (listaStorage != null) {
     if (listaStorage.length > 0) {
         listaPosts = listaStorage
     }
 }
 
+// Inclui os post-it's salvos no LocalStorage na página
 listaPosts.forEach(post => {
     adiciona(post)
 })
 
-
+// Definindo a função que atualiza o LocalStorage
 function atualizaStorage(lista) {
     localStorage.setItem("posts", JSON.stringify(lista))
 }
 
+// Cria um objeto que define as características do novo post-it
 function criaPost() {
     var infoPost = new Object
 
@@ -34,6 +37,7 @@ function criaPost() {
     adiciona(infoPost)
 }
 
+// Adiciona o post-it no mural (<ul>) e habilita todas as funcionalidades chamando as funções necessárias ao final do escopo
 function adiciona(objeto) {
     if (objeto.pronto == "true") {
         var riscado = 'style="text-decoration: line-through"'
@@ -72,6 +76,7 @@ function adiciona(objeto) {
     apaga()
 }
 
+// Adiciona a funcionalidade de riscar o texto da tarefa quando clicar no checkbox
 function risca() {
     var posts = document.querySelectorAll(".post")
     var ultimoPost = posts[0]
@@ -91,6 +96,7 @@ function risca() {
     })
 }
 
+// Adiciona a funcionalidade de editar o texto que descreve a terefa ao clicar no ícone "editar"
 function edita() {
             var posts = document.querySelectorAll(".post")
             var ultimoPost = posts[0]
@@ -105,6 +111,7 @@ function edita() {
             })
         }
 
+// Desabilita a edição do texto da tarefa ao clicar fora do texto
 function desabilitaEdicao() {
             var posts = document.querySelectorAll(".post")
             var ultimoPost = posts[0]
@@ -118,6 +125,7 @@ function desabilitaEdicao() {
             })
         }
 
+// Adiciona a funcionalidade de apagar a tarefa ao clicar no ícone "lixeira"
 function apaga() {
             var posts = document.querySelectorAll(".post")
             var ultimoPost = posts[0]
@@ -133,6 +141,7 @@ function apaga() {
             })
         }
 
+// Exibe uma paleta de cores ao clicar no ícone "paleta de cor" 
 function mostraPaleta() {
             var posts = document.querySelectorAll(".post")
             var ultimoPost = posts[0]
@@ -143,6 +152,7 @@ function mostraPaleta() {
             })
         }
 
+// Altera a cor do post-it ao selecionar a cor da paleta de cores
 function mudaCor() {
             var posts = document.querySelectorAll(".post")
             var ultimoPost = posts[0]
